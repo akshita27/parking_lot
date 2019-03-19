@@ -52,30 +52,22 @@ public class ParkingLotComponent {
               break;
             }
             else{
-              inputParser.parseCommand(input);
+              inputParser.execute(input);
             }
           }
           catch (IOException e){
             System.out.println("Error in reading input from console.");
             e.printStackTrace();
-          } catch (NoSuchMethodException e) {
-            e.printStackTrace();  // TODO impl
-          } catch (InstantiationException e) {
-            e.printStackTrace();  // TODO impl
-          } catch (IllegalAccessException e) {
-            e.printStackTrace();  // TODO impl
-          } catch (InvocationTargetException e) {
-            e.printStackTrace();  // TODO impl
           }
         }
         break;
       case 1:
-        // File input
-        //inputParser.parseFileInput(args[0]);
+        //File input
+        inputParser.parseFileInput(args[0]);
         break;
       default:
         System.out.println("Sorry! Invalid input. Please try again...!");
     }
-    
+
   }
 }

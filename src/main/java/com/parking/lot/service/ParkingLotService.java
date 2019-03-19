@@ -24,7 +24,9 @@ public class ParkingLotService {
       return;
     }
     int slotNo = parkingLot.getAvailableSlotNumber();
-    parkingLot.getAvailableSlots().remove(parkingLot.getAvailableSlots().indexOf(slotNo));
+    //parkingLot.getAvailableSlots().remove(parkingLot.getAvailableSlots().indexOf(slotNo));
+    parkingLot.getAvailableSlots().remove(slotNo);
+
     parkingLot.getCarsParked().put(slotNo, car);
     System.out.println("Allocated slot number: "+slotNo);
   }
@@ -32,9 +34,11 @@ public class ParkingLotService {
   public void unparkCar(int slotNo) {
     if(parkingLot.getCarsParked().containsKey(slotNo)) {
       parkingLot.getCarsParked().remove(slotNo);
+      parkingLot.getAvailableSlots().add(slotNo);
+      System.out.println("Slot number "+slotNo+" is free");
+      return;
     }
-    parkingLot.getAvailableSlots().add(0, slotNo);
-    System.out.println("Slot number "+slotNo+" is free");
+    System.out.println("Not found");
   }
 
   public void status() {
