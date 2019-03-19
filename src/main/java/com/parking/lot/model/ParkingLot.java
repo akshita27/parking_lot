@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
 
 /**
  * @author akshita
@@ -11,7 +12,8 @@ import java.util.Map;
 public class ParkingLot {
   private int capacity;
   private Map<Integer, Car> carsParked = new HashMap<>();
-  private List<Integer> availableSlots = new ArrayList<>();
+  //private List<Integer> availableSlots = new ArrayList<>();
+  private PriorityQueue<Integer> availableSlots = new PriorityQueue<>();
 
   public ParkingLot(int capacity) {
     this.capacity = capacity;
@@ -40,16 +42,16 @@ public class ParkingLot {
     this.carsParked = carsParked;
   }
 
-  public List<Integer> getAvailableSlots() {
+  public PriorityQueue<Integer> getAvailableSlots() {
     return availableSlots;
   }
 
-  public void setAvailableSlots(List<Integer> availableSlots) {
+  public void setAvailableSlots(PriorityQueue<Integer> availableSlots) {
     this.availableSlots = availableSlots;
   }
 
   public int getAvailableSlotNumber() {
-    return availableSlots.get(0);
+    return availableSlots.peek();
   }
   
 }
